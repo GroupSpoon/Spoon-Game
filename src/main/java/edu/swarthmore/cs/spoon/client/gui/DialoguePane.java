@@ -47,9 +47,9 @@ public class DialoguePane extends Pane implements GUIDialoguePane{
     public DialoguePane(PlayerCharacter player, String initialCaption) {
         super();
         this.clientPlayer = player;
-        dpaneX = 512; //Center
-        dpaneY = 832; //(32 * 8) - 64 == 896 - 64
-        this.resizeRelocate(287, 832, 450, 140);
+        dpaneX = 700; //Center
+        dpaneY = 100; //(32 * 8) - 64 == 896 - 64
+        this.resizeRelocate(287, 100, 450, 140);
         System.out.println("DialoguePane Constructor");
         this.setStyle("-fx-background-color: rgba(0, 0, 0, .95)");
         //this.setArcHeight(20);
