@@ -9,7 +9,6 @@ import edu.swarthmore.cs.spoon.model.interfaces.LocCreatedThingListener;
 import edu.swarthmore.cs.spoon.model.interfaces.Location;
 import edu.swarthmore.cs.spoon.model.interfaces.Position;
 import edu.swarthmore.cs.spoon.model.interfaces.Thing;
-import sun.misc.GThreadHelper;
 
 import java.util.ArrayList;
 import java.util.List;
