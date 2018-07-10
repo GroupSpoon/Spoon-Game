@@ -42,9 +42,9 @@ public class ActionClient implements Action {
     }
 
     @Override
-    public void notifyListeners() {
+    public void notifyListeners(boolean success) {
         for (ActionEndListener listener : listeners) {
-            listener.actionEnded(this.id);
+            listener.actionEnded(this.id, success);
         }
         listeners.clear();
     }

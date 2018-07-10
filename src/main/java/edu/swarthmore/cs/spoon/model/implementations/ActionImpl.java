@@ -60,9 +60,9 @@ public class  ActionImpl implements Action{
     }
 
     @Override
-    public void notifyListeners() {
+    public void notifyListeners(boolean success) {
         for (ActionEndListener listener:listeners) {
-            listener.actionEnded(this.actionId);
+            listener.actionEnded(this.actionId, success);
         }
         listeners.clear();
     }
@@ -96,7 +96,7 @@ public class  ActionImpl implements Action{
     @Override
     public boolean canPerformAction() {
         if(!(this.actor == null)) {
-            return this.actor.getSpoons() >= this.getActionSpoonCost();
+            return this.actor.getSpoons() >= -(this.getActionSpoonCost());
         }
         return false;
     }

@@ -51,7 +51,7 @@ public class WorldImpl implements World {
 
         List<String> teleMsg = new ArrayList<>();
         teleMsg.add("It worked! You're in a different place!");
-        Action teleport = new TeleportActionImpl("teleport", teleportato, 0, teleMsg, 2);
+        Action teleport = new TeleportActionImpl("teleport", teleportato, -2, teleMsg, 2);
 
         List<String> lookAtPotatoMsg = new ArrayList<>();
         lookAtPotatoMsg.add("It looks like a potato. Could it really teleport you?");
@@ -75,7 +75,7 @@ public class WorldImpl implements World {
         Action enterBed = new MovePCToThingActionImpl("enter bed", bed, 0, enterBedMsg, 0);
         List<String> napMsg = new ArrayList<>();
         napMsg.add("Zzzz");
-        Action nap = new MovePCToThingActionImpl("take a nap", bed, 0, napMsg, "you curl up for some nappy times", 1000);
+        Action nap = new MovePCToThingActionImpl("take a nap", bed, 10, napMsg, "you curl up for some nappy times", 1000);
         bed.addAction(nap);
         bed.addAction(lookAtBed);
         bed.addAction(enterBed);
@@ -92,7 +92,7 @@ public class WorldImpl implements World {
 
         List<String> washHandsMsg = new ArrayList<>();
         washHandsMsg.add("'...happy birthday to youuuuu' You're all clean!");
-        Action washHands = new TextActionImpl("Wash your hands", sink, 0, washHandsMsg, "You wash your hands, humming 'happy birthday' to yourself", 30);
+        Action washHands = new TextActionImpl("Wash your hands", sink, -5, washHandsMsg, "You wash your hands, humming 'happy birthday' to yourself", 30);
         sink.addAction(washHands);
 
         ThingFactory furnitureMaker = new ThingFactoryImpl();

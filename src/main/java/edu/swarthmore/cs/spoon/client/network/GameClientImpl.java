@@ -136,7 +136,7 @@ public class GameClientImpl implements GameClient {
                 }
                 if (object instanceof  Requests.ActionEnded) {
                     Requests.ActionEnded actionEnded = (Requests.ActionEnded) object;
-                    characterList.get(actionEnded.pcId).actionEnded(actionEnded.actionId);
+                    characterList.get(actionEnded.pcId).actionEnded(actionEnded.actionId, actionEnded.success);
                 }
                 if (object instanceof Requests.MovStateUpdate) {
                     Requests.MovStateUpdate movStateUpdate = (Requests.MovStateUpdate) object;

@@ -78,6 +78,7 @@ public class Requests {
     public static class ActionEnded implements Message {
         public int pcId;
         public int actionId;
+        public boolean success;
     }
 
     public static class MovStateUpdate implements Message {

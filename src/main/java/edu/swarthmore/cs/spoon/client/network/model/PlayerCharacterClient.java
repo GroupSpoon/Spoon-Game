@@ -1,6 +1,5 @@
 package edu.swarthmore.cs.spoon.client.network.model;
 
-import edu.swarthmore.cs.spoon.common.NotYetImplementedException;
 import edu.swarthmore.cs.spoon.common.messages.IdentifierMessage;
 import edu.swarthmore.cs.spoon.common.messages.IdentifierResponse;
 import edu.swarthmore.cs.spoon.model.interfaces.*;
@@ -165,10 +164,10 @@ public class PlayerCharacterClient extends ThingClient implements PlayerCharacte
         return null;
     }
 
-    public void actionEnded(int actionId) {
+    public void actionEnded(int actionId, boolean success) {
         if (currentAction != null) {
             if (actionId == currentAction.getActionId()) {
-                currentAction.notifyListeners();
+                currentAction.notifyListeners(success);
                 currentAction = null;
             }
         }

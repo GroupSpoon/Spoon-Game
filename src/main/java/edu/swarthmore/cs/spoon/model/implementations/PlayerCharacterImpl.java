@@ -242,7 +242,16 @@ public class PlayerCharacterImpl extends ThingImpl implements PlayerCharacter{
     public void initiateAction(Action action, ActionEndListener listener) {
         action.setActor(this);
         action.addEndListener(listener);
+        action.addEndListener(new ActionEndListener() {
+            @Override
+            public void actionEnded(int actionId, boolean success) {
+                if (success) {
+                    pcCurrSpoons += action.getActionSpoonCost();
+                }
+            }
+        });
         this.pcState = new ActingStateImpl(action, this);
+        System.out.println(this.pcCurrSpoons);
     }
 
     @Override

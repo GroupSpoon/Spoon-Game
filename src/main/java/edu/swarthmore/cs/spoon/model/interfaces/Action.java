@@ -104,7 +104,7 @@ public interface Action {
     void setActor(PlayerCharacter actor);
 
     void addEndListener(ActionEndListener listener);
-    void notifyListeners();
+    void notifyListeners(boolean success);
     void removeEndListener(ActionEndListener listener);
 
 

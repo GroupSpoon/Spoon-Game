@@ -131,10 +131,11 @@ public class GameManagerImp implements GameManager {
                     Action action = thingMap.get(initiateAction.thingId).getActions().get(initiateAction.actionId);
                     ActionEndListener listener = new ActionEndListener() {
                         @Override
-                        public void actionEnded(int actionId) {
+                        public void actionEnded(int actionId, boolean success) {
                             Requests.ActionEnded actionEnded = new Requests.ActionEnded();
                             actionEnded.actionId = actionId;
                             actionEnded.pcId = initiateAction.pcid;
+                            actionEnded.success = success;
                             server.sendToAllTCP(actionEnded);
                         }
                     };

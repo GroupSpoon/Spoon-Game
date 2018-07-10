@@ -4,7 +4,6 @@ import edu.swarthmore.cs.spoon.client.network.GameClientImpl;
 import edu.swarthmore.cs.spoon.common.Wait;
 import edu.swarthmore.cs.spoon.common.messages.Requests;
 import edu.swarthmore.cs.spoon.common.model.PositionImpl;
-import edu.swarthmore.cs.spoon.common.model.ThingListenersHolderImpl;
 import edu.swarthmore.cs.spoon.model.implementations.ActionImpl;
 import edu.swarthmore.cs.spoon.model.implementations.WorldImpl;
 import edu.swarthmore.cs.spoon.model.interfaces.*;
@@ -18,7 +17,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
-import java.sql.Time;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -239,7 +237,7 @@ public class NetworkTests {
         manager.pause();
         pc.initiateAction(action, new ActionEndListener() {
             @Override
-            public void actionEnded(int actionId) {
+            public void actionEnded(int actionId, boolean success) {
 
             }
         });

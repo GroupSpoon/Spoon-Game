@@ -1,7 +1,6 @@
 package edu.swarthmore.cs.spoon.model;
 
 import edu.swarthmore.cs.spoon.common.model.PositionImpl;
-import edu.swarthmore.cs.spoon.common.model.ThingListenersHolderImpl;
 import edu.swarthmore.cs.spoon.model.implementations.ActionImpl;
 import edu.swarthmore.cs.spoon.model.implementations.WorldImpl;
 import edu.swarthmore.cs.spoon.model.interfaces.*;
@@ -13,8 +12,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import static edu.swarthmore.cs.spoon.model.interfaces.Direction.LEFT;
-import static edu.swarthmore.cs.spoon.model.interfaces.Direction.RIGHT;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -82,7 +79,7 @@ public class actionTests1 {
     public void testTakingAction(){
         bob.initiateAction(pushTurkBurg, new ActionEndListener() {
             @Override
-            public void actionEnded(int actionId) {
+            public void actionEnded(int actionId, boolean success) {
 
             }
         });
@@ -99,7 +96,7 @@ public class actionTests1 {
         StateType beforeState = bob.getPlayerState();
         bob.initiateAction(pushTurkBurg, new ActionEndListener() {
             @Override
-            public void actionEnded(int actionId) {
+            public void actionEnded(int actionId, boolean success) {
 
             }
         });
@@ -111,7 +108,7 @@ public class actionTests1 {
     public void testStateChangeAfterAction(){
         bob.initiateAction(pushTurkBurg, new ActionEndListener() {
             @Override
-            public void actionEnded(int actionId) {
+            public void actionEnded(int actionId, boolean success) {
 
             }
         });
@@ -127,7 +124,7 @@ public class actionTests1 {
     public void testStateIsActingDuringAction(){
         bob.initiateAction(pushTurkBurg, new ActionEndListener() {
             @Override
-            public void actionEnded(int actionId) {
+            public void actionEnded(int actionId, boolean success) {
 
             }
         });
@@ -142,7 +139,7 @@ public class actionTests1 {
         StateType beforeState = bob.getPlayerState();
         bob.initiateAction(pushTurkBurg, new ActionEndListener() {
             @Override
-            public void actionEnded(int actionId) {
+            public void actionEnded(int actionId, boolean success) {
 
             }
         });
@@ -179,7 +176,7 @@ public class actionTests1 {
         System.out.println(oldPos.getPointsAsInts());
         bob.initiateAction(teleport, new ActionEndListener() {
             @Override
-            public void actionEnded(int actionId) {
+            public void actionEnded(int actionId, boolean success) {
 
             }
         });

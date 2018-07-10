@@ -5,7 +5,6 @@ import edu.swarthmore.cs.spoon.model.interfaces.Action;
 import edu.swarthmore.cs.spoon.model.interfaces.ActionEndListener;
 import edu.swarthmore.cs.spoon.model.interfaces.PlayerCharacter;
 import edu.swarthmore.cs.spoon.model.interfaces.Thing;
-import javafx.animation.Animation;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -142,9 +141,10 @@ public class DialoguePane extends Pane implements GUIDialoguePane{
                 visibleTextArea.appendText(action.getActionDescription());
                 ActionEndListener listener = new ActionEndListener() {
                     @Override
-                    public void actionEnded(int actionId) {
+                    public void actionEnded(int actionId, boolean success) {
                         Platform.runLater(() ->
-                                displayEndMessage(action)
+
+                                displayEndMessage(action, success)
                         );
                     }
                 };
@@ -167,11 +167,19 @@ public class DialoguePane extends Pane implements GUIDialoguePane{
         return null;
     }
 
-    public void displayEndMessage(Action action) {
+    public void displayEndMessage(Action action, boolean success) {
         //IMPORTANT
         //A separate function that was created due to difficulties with javafx threads potentially interacting with kryonet. This function
         //MUST remain as its own method or must be wrapped with a Platform RunLater.
-        List<String> message = action.endActionMessage();
+
+        List<String> message;
+        if (success) {
+            message = action.endActionMessage();
+        }
+        else {
+            message = new ArrayList<>();
+            message.add("You don't have the spoons for this");
+        }
         visibleTextArea.clear();
         for (String string : message) {
             visibleTextArea.appendText(string);
